@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/appBarLayout"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse">
+
+    <android.support.v7.widget.Toolbar
+            android:background="?android:attr/windowBackground"
+            android:backgroundTint="@color/white"
+            android:id="@+id/toolbar"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents"
+            tools:ignore="RtlSymmetry" tools:targetApi="lollipop">
+
+        <android.support.constraint.ConstraintLayout
+                android:background="@color/white"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+            <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/movies"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_title_toolbar"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                    android:id="@+id/icSearch"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_search"
+                    android:padding="@dimen/padding_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+</android.support.design.widget.AppBarLayout>
+

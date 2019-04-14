@@ -2,7 +2,7 @@ package com.edu.hcmut.movie.model
 
 import com.google.gson.annotations.SerializedName
 
-class NowPlaying {
+class Movies {
     val results: List<Movie>? = null
 
     val page: Int? = null

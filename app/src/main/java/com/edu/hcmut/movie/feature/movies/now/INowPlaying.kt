@@ -1,4 +1,4 @@
-package com.edu.hcmut.movie.feature.now
+package com.edu.hcmut.movie.feature.movies.now
 
 import com.edu.hcmut.movie.model.Movie
 
