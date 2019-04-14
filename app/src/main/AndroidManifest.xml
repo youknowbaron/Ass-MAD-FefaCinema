@@ -13,6 +13,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".feature.now.NowPlayingActivity">
+
+        </activity>
+        <activity android:name=".feature.authentication.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
