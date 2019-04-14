@@ -10,6 +10,7 @@ class Api {
 
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
+        private const val LANGUAGE = "vi"
 
         private fun builder(): Retrofit {
             return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
@@ -23,6 +24,7 @@ class Api {
             return OkHttpClient.Builder().addNetworkInterceptor { chain ->
                 var request = chain.request()
                 val url = request.url().newBuilder().addQueryParameter("api_key", BuildConfig.API_KEY)
+                    .addQueryParameter("language", LANGUAGE)
                     .build()
                 request = request.newBuilder().url(url).build()
                 chain.proceed(request)
