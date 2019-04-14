@@ -1,10 +1,10 @@
 package com.edu.hcmut.movie.feature.now
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.model.Movie
+import kotlinx.android.synthetic.main.activity_now_playing.*
 
 class NowPlayingActivity : AppCompatActivity(), INowPlaying.View {
 
@@ -25,10 +25,10 @@ class NowPlayingActivity : AppCompatActivity(), INowPlaying.View {
     }
 
     override fun onResponse(movies: List<Movie>?) {
-        Log.d("NowPlayingActivity", "onResponse")
+        tv.text = "Response"
     }
 
     override fun onFailure() {
-        Log.d("NowPlayingActivity", "onFailure")
+        tv.text = "Failure"
     }
 }
