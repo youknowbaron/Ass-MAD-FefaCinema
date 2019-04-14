@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NowPlayingPresenter(internal var view: INowPlaying.View) : INowPlaying.Presenter {
+class NowPlayingPresenter(val view: INowPlaying.View) : INowPlaying.Presenter {
 
     init {
         view.setPresenter(this)
