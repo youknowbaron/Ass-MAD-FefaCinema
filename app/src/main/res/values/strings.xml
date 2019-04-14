@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie</string>
+    <string name="slogan">Book and enjoy with us</string>
     <string name="movies">Danh sách phim</string>
 </resources>

@@ -14,15 +14,16 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".feature.movies.now.NowPlayingFragment">
 
-        </activity>
-        <activity android:name=".feature.movies.MoviesActivity">
+        <activity android:name=".feature.authentication.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".feature.movies.MoviesActivity">
+
         </activity>
     </application>
 
