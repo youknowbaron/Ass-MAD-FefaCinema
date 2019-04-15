@@ -2,4 +2,7 @@
     <string name="app_name">Movie</string>
     <string name="slogan">Book and enjoy with us</string>
     <string name="movies">Danh sách phim</string>
+    <string name="now_playing">Đang chiếu</string>
+    <string name="upcoming">Sắp chiếu</string>
+    <string name="popular">Phim hay</string>
 </resources>

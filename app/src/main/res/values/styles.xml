@@ -11,8 +11,6 @@
 
     <style name="MyTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
-        <item name="tabTextColor">@color/black50</item>
-        <item name="tabSelectedTextColor">@color/black</item>
     </style>
 
     <style name="MyTabTextAppearance" parent="TextAppearance.Design.Tab">

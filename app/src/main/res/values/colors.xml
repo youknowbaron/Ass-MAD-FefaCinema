@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#192429</color>
+    <color name="colorPrimaryDark">#192429</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorTransparent">#00ffffff</color>
     <color name="darkBlue">#271d5d</color>
@@ -43,5 +43,14 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="black50">#80000000</color>
+
+    <color name="bg_item">#1D292E</color>
+    <color name="bg">#1B272B</color>
+    <color name="bg_toolbar">#172227</color>
+    <color name="normal_text">#ffffff</color>
+    <color name="sub_text">#B3FFFFFF</color>
+    <color name="tab_unselected">#8AFFFFFF</color>
+    <color name="tab_selected">#FFFFFF</color>
+    <color name="border_item">#0AFFFFFF</color>
 
 </resources>

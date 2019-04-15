@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="@dimen/padding_normal">
+
+    <ImageView
+            android:id="@+id/imvBackDrop"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2677"
+            tools:background="@color/bg"
+            tools:ignore="ContentDescription"/>
+
+    <android.support.constraint.ConstraintLayout
+            android:background="@drawable/bg_item"
+            android:id="@+id/cslParent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:padding="@dimen/padding_normal"
+            app:layout_constraintBottom_toBottomOf="@id/imvBackDrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imvBackDrop"
+            app:layout_constraintTop_toTopOf="@id/imvBackDrop">
+
+        <TextView
+                android:id="@+id/tvTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/text_title"
+                android:textColor="@color/normal_text"
+                android:textStyle="bold"
+                tools:text="Guardians of the Galaxy vol.2"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View android:background="@color/bg_item"
+          android:layout_height="0dp"
+          android:layout_width="1dp"
+          app:layout_constraintBottom_toBottomOf="@id/cslParent"
+          app:layout_constraintStart_toEndOf="@id/imvBackDrop"
+          app:layout_constraintTop_toTopOf="@id/cslParent"/>
+
+</android.support.constraint.ConstraintLayout>
