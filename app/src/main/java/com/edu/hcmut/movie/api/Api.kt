@@ -24,7 +24,7 @@ class Api {
             return OkHttpClient.Builder().addNetworkInterceptor { chain ->
                 var request = chain.request()
                 val url = request.url().newBuilder().addQueryParameter("api_key", BuildConfig.API_KEY)
-                    .addQueryParameter("language", LANGUAGE)
+//                    .addQueryParameter("language", LANGUAGE)
                     .build()
                 request = request.newBuilder().url(url).build()
                 chain.proceed(request)

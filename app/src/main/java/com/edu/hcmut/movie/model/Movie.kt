@@ -51,4 +51,7 @@ class Movie {
     @SerializedName("vote_count")
     var voteCount: Int? = null
 
+    @SerializedName("genre_ids")
+    var genreIds: List<Int>? = null
+
 }

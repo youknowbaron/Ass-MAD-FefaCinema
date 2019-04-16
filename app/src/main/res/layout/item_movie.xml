@@ -3,19 +3,19 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:padding="@dimen/padding_normal">
 
     <ImageView
-            android:id="@+id/imvBackDrop"
+            android:id="@+id/imvPoster"
             android:layout_height="0dp"
             android:layout_width="0dp"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintDimensionRatio="2:3.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.2677"
+            app:layout_constraintWidth_percent="0.3333"
             tools:background="@color/bg"
             tools:ignore="ContentDescription"/>
 
@@ -26,23 +26,67 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:layout_width="0dp"
-            android:padding="@dimen/padding_normal"
-            app:layout_constraintBottom_toBottomOf="@id/imvBackDrop"
+            app:layout_constraintBottom_toBottomOf="@id/imvPoster"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imvBackDrop"
-            app:layout_constraintTop_toTopOf="@id/imvBackDrop">
+            app:layout_constraintStart_toEndOf="@id/imvPoster"
+            app:layout_constraintTop_toTopOf="@id/imvPoster">
 
         <TextView
+                android:fontFamily="@font/roboto_condensed_bold"
                 android:id="@+id/tvTitle"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_big"
                 android:layout_width="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:textSize="@dimen/text_title"
+                android:layout_marginStart="@dimen/padding_normal"
                 android:textColor="@color/normal_text"
+                android:textSize="@dimen/text_big"
                 android:textStyle="bold"
-                tools:text="Guardians of the Galaxy vol.2"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintBottom_toTopOf="@+id/tvGenres"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                tools:text="Guardians of the Galaxy vol.2"/>
+
+        <TextView
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:id="@+id/tvGenres"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/padding_normal"
+                android:textSize="@dimen/text_normal"
+                app:layout_constraintBottom_toTopOf="@+id/lbReleaseDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="Action, Adventure, Fantasy" />
+
+        <TextView
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:id="@+id/lbReleaseDate"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_normal"
+                android:layout_marginBottom="@dimen/padding_big"
+                android:layout_width="wrap_content"
+                android:text="@string/release_date"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:id="@+id/tvReleaseDate"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_big"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/sub_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lbReleaseDate"
+                tools:text="2019-03-23"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -50,7 +94,23 @@
           android:layout_height="0dp"
           android:layout_width="1dp"
           app:layout_constraintBottom_toBottomOf="@id/cslParent"
-          app:layout_constraintStart_toEndOf="@id/imvBackDrop"
+          app:layout_constraintStart_toEndOf="@id/imvPoster"
           app:layout_constraintTop_toTopOf="@id/cslParent"/>
+
+    <TextView
+            android:background="@drawable/bg_vote_average"
+            android:fontFamily="@font/roboto_regular"
+            android:id="@+id/tvVoteAverage"
+            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:padding="6dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_tiny"
+            app:layout_constraintBottom_toTopOf="@id/cslParent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/imvPoster"
+            app:layout_constraintStart_toEndOf="@id/imvPoster"
+            app:layout_constraintTop_toTopOf="@id/cslParent"
+            tools:text="8.0"/>
 
 </android.support.constraint.ConstraintLayout>

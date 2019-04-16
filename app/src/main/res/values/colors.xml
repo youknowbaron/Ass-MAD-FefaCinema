@@ -52,5 +52,6 @@
     <color name="tab_unselected">#8AFFFFFF</color>
     <color name="tab_selected">#FFFFFF</color>
     <color name="border_item">#0AFFFFFF</color>
+    <color name="yellow">#FFC500</color>
 
 </resources>

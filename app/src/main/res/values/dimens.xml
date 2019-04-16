@@ -2,6 +2,7 @@
 <resources>
     <dimen name="padding_button">16dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_big">24dp</dimen>
     <dimen name="padding_large">32dp</dimen>
 
@@ -10,6 +11,10 @@
     <dimen name="text_tab_unselected">14sp</dimen>
     <dimen name="text_tab_selected">20sp</dimen>
     <dimen name="text_title">20sp</dimen>
+    <dimen name="text_tiny">10sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_big">18sp</dimen>
     <dimen name="corner_item">4dp</dimen>
     
 </resources>

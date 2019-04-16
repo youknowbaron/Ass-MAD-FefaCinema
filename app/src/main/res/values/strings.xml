@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Movie</string>
     <string name="slogan">Book and enjoy with us</string>
-    <string name="movies">Danh sách phim</string>
-    <string name="now_playing">Đang chiếu</string>
-    <string name="upcoming">Sắp chiếu</string>
-    <string name="popular">Phim hay</string>
+    <string name="movies">Movies</string>
+    <string name="now_playing">Now playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="popular">Popular</string>
+    <string name="release_date">Release date:</string>
 </resources>

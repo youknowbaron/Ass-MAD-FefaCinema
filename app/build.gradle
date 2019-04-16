@@ -28,6 +28,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     ext {
         glideVersion = '4.8.0'
