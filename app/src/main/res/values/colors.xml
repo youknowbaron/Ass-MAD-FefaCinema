@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#192429</color>
-    <color name="colorPrimaryDark">#192429</color>
+    <color name="colorPrimaryDark">#172227</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorTransparent">#00ffffff</color>
     <color name="darkBlue">#271d5d</color>
@@ -53,5 +53,6 @@
     <color name="tab_selected">#FFFFFF</color>
     <color name="border_item">#0AFFFFFF</color>
     <color name="yellow">#FFC500</color>
+    <color name="red_dark">#91413C</color>
 
 </resources>
