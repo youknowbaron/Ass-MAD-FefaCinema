@@ -51,16 +51,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-
-//    /*Social*/
-//    implementation 'com.facebook.android:facebook-android-sdk:4.40.0'
-//    implementation 'com.google.android.gms:play-services-auth:16.0.1'
-//    implementation 'com.google.android.gms:play-services-base:16.1.0'
-//    implementation 'com.google.android.gms:play-services-plus:16.0.0'
-//    implementation 'com.google.android.gms:play-services-gcm:16.1.0'
-//    implementation 'com.google.firebase:firebase-core:16.0.8'
-//    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
 
     /*Glide*/
     implementation ("com.github.bumptech.glide:glide:$glideVersion") {
@@ -74,4 +65,7 @@ dependencies {
 
     //google
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation "com.google.firebase:firebase-firestore:18.2.0"
 }
+
+apply plugin: 'com.google.gms.google-services'

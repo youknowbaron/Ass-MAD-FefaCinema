@@ -9,15 +9,18 @@ import android.view.ViewGroup
 import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.edu.hcmut.movie.model.Movie
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class NowPlayingFragment : Fragment(), INowPlaying.View {
 
     private var presenter: INowPlaying.Presenter
     private var adapter: MovieAdapter? = null
+    private var fireStore: FirebaseFirestore
 
     init {
         presenter = NowPlayingPresenter(this)
+        fireStore = FirebaseFirestore.getInstance()
     }
 
     companion object {

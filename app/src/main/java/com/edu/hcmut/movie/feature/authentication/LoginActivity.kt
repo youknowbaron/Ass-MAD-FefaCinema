@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.databinding.ActivityLoginBinding
+import com.edu.hcmut.movie.feature.movies.MoviesActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -82,6 +83,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         val personFamilyName = account?.familyName
         val personEmail = account?.email
         val personPhoto = account?.photoUrl
+        startActivity(Intent(this, MoviesActivity::class.java))
         Log.d("Gray", "person name: $personName")
         Log.d("Gray", "person give name: $personGivenName")
         Log.d("Gray", "person family name: $personFamilyName")
