@@ -55,4 +55,8 @@
     <color name="yellow">#FFC500</color>
     <color name="red_dark">#91413C</color>
 
+    <color name="bg_star">#62696D</color>
+
+    <color name="text_hint">#BCBFC1</color>
+
 </resources>

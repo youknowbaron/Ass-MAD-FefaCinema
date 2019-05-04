@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.edu.hcmut.movie.R
+import com.edu.hcmut.movie.feature.detail.DetailMovieActivity
 import com.edu.hcmut.movie.feature.movies.adapter.MovieAdapter
-import com.edu.hcmut.movie.feature.movies.popular.IPopular
-import com.edu.hcmut.movie.feature.movies.popular.PopularFragment
-import com.edu.hcmut.movie.feature.movies.popular.PopularPresenter
 import com.edu.hcmut.movie.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies.*
 
@@ -32,7 +30,9 @@ class PopularFragment : Fragment(), IPopular.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.getPopular()
-        adapter = MovieAdapter(context)
+        adapter = MovieAdapter(context) {
+            startActivity(DetailMovieActivity.newInstance(context, it))
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
