@@ -1,5 +1,6 @@
 package com.edu.hcmut.movie.feature.movies
 
+import android.databinding.DataBindingUtil.setContentView
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -7,6 +8,8 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.edu.hcmut.movie.R
+import com.edu.hcmut.movie.R.id.tabLayout
+import com.edu.hcmut.movie.R.id.viewPager
 import com.edu.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import kotlinx.android.synthetic.main.activity_movies.*
 

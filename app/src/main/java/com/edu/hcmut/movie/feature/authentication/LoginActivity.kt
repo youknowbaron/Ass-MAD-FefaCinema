@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     }
 
     private fun signInWithGoogleSignIn() {
-        binding.btnEmail.setOnClickListener {
+        binding.btnSignUpEmail.setOnClickListener {
             val signInIntent = mGoogleSignInClient.signInIntent
             startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST_CODE)
         }
