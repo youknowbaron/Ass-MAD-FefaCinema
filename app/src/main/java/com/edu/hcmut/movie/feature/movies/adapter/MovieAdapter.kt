@@ -2,6 +2,7 @@ package com.edu.hcmut.movie.feature.movies.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +13,14 @@ import com.edu.hcmut.movie.helper.ImageHelper
 import com.edu.hcmut.movie.model.Movie
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movie.*
+import java.util.concurrent.atomic.AtomicInteger
 
 class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var movies: List<Movie> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
+        Log.d("createViewHolder", "${countInflate.incrementAndGet()}")
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false))
     }
 
@@ -45,5 +48,9 @@ class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAd
                 .load(linkImage)
                 .into(imvPoster )
         }
+    }
+
+    companion object {
+        private val countInflate: AtomicInteger = AtomicInteger(0)
     }
 }

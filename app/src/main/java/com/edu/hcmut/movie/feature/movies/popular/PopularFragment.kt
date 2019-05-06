@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.feature.movies.adapter.MovieAdapter
+import com.edu.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.edu.hcmut.movie.feature.movies.popular.IPopular
 import com.edu.hcmut.movie.feature.movies.popular.PopularFragment
 import com.edu.hcmut.movie.feature.movies.popular.PopularPresenter
@@ -48,6 +49,8 @@ class PopularFragment : Fragment(), IPopular.View {
         rcvMovies.apply {
             adapter = this@PopularFragment.adapter
             layoutManager = LinearLayoutManager(context)
+            setRecycledViewPool(MovieViewPool.getInstance())
+            (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
         }
     }
 

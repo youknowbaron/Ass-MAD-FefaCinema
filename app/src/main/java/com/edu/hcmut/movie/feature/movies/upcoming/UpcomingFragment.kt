@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.feature.movies.adapter.MovieAdapter
+import com.edu.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.edu.hcmut.movie.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies.*
 
@@ -45,6 +46,8 @@ class UpcomingFragment : Fragment(), IUpcoming.View {
         rcvMovies.apply {
             adapter = this@UpcomingFragment.adapter
             layoutManager = LinearLayoutManager(context)
+            setRecycledViewPool(MovieViewPool.getInstance())
+            (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
         }
     }
 
