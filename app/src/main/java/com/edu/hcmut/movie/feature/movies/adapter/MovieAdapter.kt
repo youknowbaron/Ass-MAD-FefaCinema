@@ -11,11 +11,13 @@ import com.edu.hcmut.movie.R
 import com.edu.hcmut.movie.helper.GenreHelper
 import com.edu.hcmut.movie.helper.ImageHelper
 import com.edu.hcmut.movie.model.Movie
+import com.edu.hcmut.movie.util.NORMAL_QUALITY
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movie.*
 import java.util.concurrent.atomic.AtomicInteger
 
-class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val context: Context?, private val listener: (Int) -> Unit) :
+    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var movies: List<Movie> = ArrayList()
 
@@ -28,6 +30,9 @@ class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAd
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(movies[position])
+        holder.itemView.setOnClickListener {
+            movies[position].id?.let { it1 -> listener.invoke(it1) }
+        }
     }
 
     fun setData(movies: List<Movie>) {
@@ -43,10 +48,10 @@ class MovieAdapter(private val context: Context?) : RecyclerView.Adapter<MovieAd
             val genres = GenreHelper.getGenresFromIds(movie?.genreIds)
             tvGenres.text = genres
             tvReleaseDate.text = movie?.releaseDate
-            val linkImage = ImageHelper.getLinkImage(movie?.posterPath, ImageHelper.NORMAL_QUALITY)
+            val linkImage = ImageHelper.getLinkImage(movie?.posterPath, NORMAL_QUALITY)
             Glide.with(context ?: return)
                 .load(linkImage)
-                .into(imvPoster )
+                .into(imvPoster)
         }
     }
 

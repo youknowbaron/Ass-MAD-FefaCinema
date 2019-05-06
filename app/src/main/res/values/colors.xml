@@ -54,5 +54,10 @@
     <color name="border_item">#0AFFFFFF</color>
     <color name="yellow">#FFC500</color>
     <color name="red_dark">#91413C</color>
+    <color name="red_google">#d93228</color>
+    <color name="bg_star">#62696D</color>
 
+    <color name="text_hint">#BCBFC1</color>
+
+    <color name="blue">#4267B2</color>
 </resources>

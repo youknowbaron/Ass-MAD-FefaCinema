@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.edu.hcmut.movie.R
+import com.edu.hcmut.movie.feature.detail.DetailMovieActivity
 import com.edu.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.edu.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.edu.hcmut.movie.model.Movie
@@ -30,7 +31,9 @@ class UpcomingFragment : Fragment(), IUpcoming.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.getUpcoming()
-        adapter = MovieAdapter(context)
+        adapter = MovieAdapter(context) {
+            startActivity(DetailMovieActivity.newInstance(context, it))
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
