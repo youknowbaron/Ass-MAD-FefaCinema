@@ -1,7 +1,7 @@
 package com.edu.hcmut.movie.feature.movies.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_movie.*
 import java.util.concurrent.atomic.AtomicInteger
 
 class MovieAdapter(private val context: Context?, private val listener: (Int) -> Unit) :
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private var movies: List<Movie> = ArrayList()
 
@@ -40,7 +40,7 @@ class MovieAdapter(private val context: Context?, private val listener: (Int) ->
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class ViewHolder(override val containerView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bind(movie: Movie?) {
             tvTitle.text = movie?.title

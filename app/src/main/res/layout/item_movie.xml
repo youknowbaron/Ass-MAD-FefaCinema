@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,19 +7,20 @@
         android:layout_width="match_parent"
         android:padding="@dimen/padding_normal">
 
-    <ImageView
+    <com.edu.hcmut.movie.util.RoundImageView
             android:id="@+id/imvPoster"
             android:layout_height="0dp"
             android:layout_width="0dp"
             android:scaleType="centerCrop"
+            app:cornerRadius="4dp"
+            app:roundedCorners="all"
             app:layout_constraintDimensionRatio="2:3.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.3333"
-            tools:background="@color/bg"
             tools:ignore="ContentDescription"/>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:background="@drawable/bg_item"
             android:id="@+id/cslParent"
             android:layout_height="0dp"
@@ -91,7 +92,7 @@
                 app:layout_constraintStart_toEndOf="@id/lbReleaseDate"
                 tools:text="2019-03-23"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View android:background="@color/bg_item"
           android:layout_height="0dp"
@@ -116,7 +117,7 @@
             app:layout_constraintTop_toTopOf="@id/cslParent"
             tools:text="8.0"/>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
             android:id="@+id/cvBookTicket"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_small"
@@ -138,6 +139,6 @@
                 android:src="@drawable/ic_ticket"/>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,15 @@
 package com.edu.hcmut.movie.feature.movies.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 class MovieViewPool {
     companion object {
         private val LOCK = Any()
-        private var instance: RecyclerView.RecycledViewPool? = null
-        fun getInstance(): RecyclerView.RecycledViewPool {
+        private var instance: androidx.recyclerview.widget.RecyclerView.RecycledViewPool? = null
+        fun getInstance(): androidx.recyclerview.widget.RecyclerView.RecycledViewPool {
             synchronized(LOCK) {
                 if (instance == null)
-                    instance = RecyclerView.RecycledViewPool()
+                    instance = androidx.recyclerview.widget.RecyclerView.RecycledViewPool()
                 return instance!!
             }
         }

@@ -1,8 +1,8 @@
 package com.edu.hcmut.movie.feature.movies.popular
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ import com.edu.hcmut.movie.feature.movies.popular.PopularPresenter
 import com.edu.hcmut.movie.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class PopularFragment : Fragment(), IPopular.View {
+class PopularFragment : androidx.fragment.app.Fragment(), IPopular.View {
 
     private var presenter: IPopular.Presenter
     private var adapter: MovieAdapter? = null
@@ -51,9 +51,9 @@ class PopularFragment : Fragment(), IPopular.View {
     private fun initRecyclerView() {
         rcvMovies.apply {
             adapter = this@PopularFragment.adapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             setRecycledViewPool(MovieViewPool.getInstance())
-            (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
+            (layoutManager as androidx.recyclerview.widget.LinearLayoutManager).recycleChildrenOnDetach = true
         }
     }
 

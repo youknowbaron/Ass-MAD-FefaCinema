@@ -2,10 +2,10 @@ package com.edu.hcmut.movie.feature.movies.adapter
 
 import android.content.Context
 import android.graphics.Typeface
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -14,13 +14,13 @@ import com.edu.hcmut.movie.feature.movies.now.NowPlayingFragment
 import com.edu.hcmut.movie.feature.movies.popular.PopularFragment
 import com.edu.hcmut.movie.feature.movies.upcoming.UpcomingFragment
 
-class MoviesPagerAdapter(fm: FragmentManager, private val context: Context?) : FragmentPagerAdapter(fm) {
+class MoviesPagerAdapter(fm: androidx.fragment.app.FragmentManager, private val context: Context?) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
     companion object {
         const val NUM_PAGE = 3
     }
 
-    override fun getItem(position: Int): Fragment = when (position) {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment = when (position) {
         0 -> NowPlayingFragment.newInstance()
         1 -> UpcomingFragment.newInstance()
         2 -> PopularFragment.newInstance()

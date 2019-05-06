@@ -1,9 +1,14 @@
 package com.edu.hcmut.movie.feature.detail
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+import android.view.WindowManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.edu.hcmut.movie.BuildConfig
@@ -47,6 +52,14 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         presenter.getVideoTrailer(movieId)
 
         initClickEvent()
+        transparentStatusBar()
+    }
+
+    private fun transparentStatusBar() {
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
+        window.decorView.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+        window.statusBarColor = Color.TRANSPARENT
     }
 
     override fun setPresenter(presenter: IDetail.Presenter) {
@@ -128,12 +141,21 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
 
     override fun onBackPressed() {
         if (isFullScreen && youtubePlayer != null)
-            youtubePlayer!!.setFullscreen(false)
+            youtubePlayer?.setFullscreen(false)
         else if (playerFragment?.isVisible == true)
             fragmentManager.beginTransaction().remove(playerFragment).commit()
         else
             super.onBackPressed()
-
     }
 
+    private fun setWindowFlag(activity: Activity, bits: Int, on: Boolean) {
+        val win = activity.window
+        val winParams = win.attributes
+        if (on) {
+            winParams.flags = winParams.flags or bits
+        } else {
+            winParams.flags = winParams.flags and bits.inv()
+        }
+        win.attributes = winParams
+    }
 }

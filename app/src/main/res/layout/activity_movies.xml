@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,7 @@
         android:background="@color/bg"
         tools:context=".feature.movies.now.NowPlayingFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
             android:id="@+id/cvParent"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
@@ -26,7 +26,7 @@
                     android:id="@+id/toolbar"
                     layout="@layout/toolbar_with_search"/>
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_height="64dp"
                     android:layout_width="match_parent"
@@ -37,12 +37,12 @@
                     app:tabMode="fixed"
                     style="@style/MyTabLayout"/>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_height="0dp"
             android:layout_width="match_parent"
@@ -52,4 +52,4 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/cvParent"
             app:layout_constraintVertical_bias="1.0"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

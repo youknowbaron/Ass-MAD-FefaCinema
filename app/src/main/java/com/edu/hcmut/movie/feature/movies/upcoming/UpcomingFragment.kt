@@ -1,8 +1,8 @@
 package com.edu.hcmut.movie.feature.movies.upcoming
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import com.edu.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.edu.hcmut.movie.model.Movie
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class UpcomingFragment : Fragment(), IUpcoming.View {
+class UpcomingFragment : androidx.fragment.app.Fragment(), IUpcoming.View {
 
     private var presenter: IUpcoming.Presenter
     private var adapter: MovieAdapter? = null
@@ -48,9 +48,9 @@ class UpcomingFragment : Fragment(), IUpcoming.View {
     private fun initRecyclerView() {
         rcvMovies.apply {
             adapter = this@UpcomingFragment.adapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             setRecycledViewPool(MovieViewPool.getInstance())
-            (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
+            (layoutManager as androidx.recyclerview.widget.LinearLayoutManager).recycleChildrenOnDetach = true
         }
     }
 

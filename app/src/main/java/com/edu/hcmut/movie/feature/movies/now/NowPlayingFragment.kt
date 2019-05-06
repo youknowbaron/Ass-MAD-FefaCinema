@@ -1,8 +1,8 @@
 package com.edu.hcmut.movie.feature.movies.now
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.edu.hcmut.movie.model.Movie
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_movies.*
 
-class NowPlayingFragment : Fragment(), INowPlaying.View {
+class NowPlayingFragment : androidx.fragment.app.Fragment(), INowPlaying.View {
 
     private var presenter: INowPlaying.Presenter
     private var adapter: MovieAdapter? = null
@@ -51,9 +51,9 @@ class NowPlayingFragment : Fragment(), INowPlaying.View {
     private fun initRecyclerView() {
         rcvMovies.apply {
             adapter = this@NowPlayingFragment.adapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
             setRecycledViewPool(MovieViewPool.getInstance())
-            (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
+            (layoutManager as androidx.recyclerview.widget.LinearLayoutManager).recycleChildrenOnDetach = true
         }
     }
 
