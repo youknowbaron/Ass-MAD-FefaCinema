@@ -33,6 +33,10 @@ androidExtensions {
     experimental = true
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     ext {
         glideVersion = '4.8.0'
@@ -72,5 +76,8 @@ dependencies {
 
     //Youtube
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
+
+    //facebook
+    implementation 'com.facebook.android:facebook-android-sdk:4.40.0'
 
 }
