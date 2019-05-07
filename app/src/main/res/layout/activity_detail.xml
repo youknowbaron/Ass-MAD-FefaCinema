@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="@id/ivVideo"
             app:layout_constraintTop_toTopOf="@id/ivVideo"
     />
-    <com.edu.hcmut.movie.util.RoundImageView
+    <com.app.hcmut.movie.util.RoundImageView
             android:elevation="8dp"
             android:id="@+id/ivPoster"
             android:layout_height="200dp"
