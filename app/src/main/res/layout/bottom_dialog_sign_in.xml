@@ -11,12 +11,15 @@
             android:drawableStart="@drawable/ic_gmail"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:padding="@dimen/padding_normal"
+            android:padding="@dimen/padding_big"
             android:paddingEnd="0dp"
             android:paddingStart="@dimen/padding_large"
             android:text="@string/sign_in_with_google"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_large"/>
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="@dimen/text_title"/>
+
+    <View style="@style/Divider" />
 
     <TextView
             android:id="@+id/btnFacebook"
@@ -24,11 +27,40 @@
             android:drawableStart="@drawable/ic_facebook"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:padding="@dimen/padding_normal"
+            android:padding="@dimen/padding_big"
             android:paddingEnd="0dp"
             android:paddingStart="@dimen/padding_large"
+            android:fontFamily="@font/roboto_medium"
             android:text="@string/sign_in_with_facebook"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_large"/>
+            android:textSize="@dimen/text_title"/>
 
 </LinearLayout>
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+    <!--<TextView-->
+            <!--android:id="@+id/tvSignInWith"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="@string/sign_in_with"-->
+            <!--android:textColor="@color/black"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--android:layout_marginTop="@dimen/padding_large"-->
+            <!--android:fontFamily="@font/roboto_medium"-->
+            <!--android:textSize="@dimen/text_large"/>-->
+    <!---->
+    <!--<ImageView -->
+            <!--android:id="@+id/btnGoogle"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvSignInWith"-->
+            <!--android:layout_marginTop="@dimen/padding_large"-->
+            <!--android:background="@drawable/ic_gmail"-->
+            <!--android:layout_width="80dp" -->
+            <!--android:layout_height="80dp"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
