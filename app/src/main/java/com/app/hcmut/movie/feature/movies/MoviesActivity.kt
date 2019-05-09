@@ -2,18 +2,21 @@ package com.app.hcmut.movie.feature.movies
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import com.app.hcmut.movie.R
+import com.app.hcmut.movie.ext.toast
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.activity_movies.*
-
+import kotlinx.android.synthetic.main.content_movies.*
+import kotlinx.android.synthetic.main.drawer_menu.*
 
 class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
@@ -24,6 +27,22 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
         initView()
+        initToolbar()
+        initDrawerMenu()
+    }
+
+
+    private fun initToolbar() {
+        icDrawer.setOnClickListener {
+            drawerLayout.openDrawer(Gravity.LEFT)
+        }
+
+    }
+
+    private fun initDrawerMenu() {
+        tvSavedMovie.setOnClickListener {
+            toast("saved movie")
+        }
     }
 
     override fun onStart() {

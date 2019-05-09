@@ -17,4 +17,10 @@
     <string name="grade_now">Grade Now</string>
     <string name="_10">/10</string>
     <string name="facebook_app_id">771628916545049</string>
+    <string name="standard">STANDARD</string>
+    <string name="hello">Hello</string>
+    <string name="watched_movie">Watched Movie</string>
+    <string name="saved_movie">Saved Movie</string>
+    <string name="log_in">Log in</string>
+    <string name="log_out">Log out</string>
 </resources>

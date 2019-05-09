@@ -50,6 +50,8 @@
     <color name="normal_text">#ffffff</color>
     <color name="sub_text">#B3FFFFFF</color>
     <color name="tab_unselected">#8AFFFFFF</color>
+    <color name="gray">#A4A4A4</color>
+    <color name="color_divider">#D5D5D5</color>
     <color name="tab_selected">#FFFFFF</color>
     <color name="border_item">#0AFFFFFF</color>
     <color name="yellow">#FFC500</color>
