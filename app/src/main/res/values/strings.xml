@@ -21,6 +21,8 @@
     <string name="hello">Hello</string>
     <string name="watched_movie">Watched Movie</string>
     <string name="saved_movie">Saved Movie</string>
-    <string name="log_in">Log in</string>
-    <string name="log_out">Log out</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
 </resources>

@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.ext.toast
@@ -18,10 +19,12 @@ import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.content_movies.*
 import kotlinx.android.synthetic.main.drawer_menu.*
 
-class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
+class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, SignInBottomDialog.IActionListener {
 
     private var lastPage = 0
     private lateinit var googleApiClient: GoogleApiClient
+
+    private var bottomDialog: SignInBottomDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,18 +34,30 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         initDrawerMenu()
     }
 
-
     private fun initToolbar() {
         icDrawer.setOnClickListener {
-            drawerLayout.openDrawer(Gravity.LEFT)
+            drawerLayout.openDrawer(GravityCompat.START)
         }
-
     }
 
     private fun initDrawerMenu() {
         tvSavedMovie.setOnClickListener {
             toast("saved movie")
         }
+        tvSignIn.setOnClickListener {
+            bottomDialog = SignInBottomDialog.newInstance()
+            bottomDialog?.show(supportFragmentManager, bottomDialog?.tag)
+        }
+    }
+
+    override fun onClickGoogle() {
+        toast("Google")
+        bottomDialog?.dismiss()
+    }
+
+    override fun onClickFacebook() {
+        toast("Facebook")
+        bottomDialog?.dismiss()
     }
 
     override fun onStart() {
