@@ -6,9 +6,9 @@
         android:orientation="vertical">
 
     <TextView
-            android:id="@+id/btnGoogle"
             android:drawablePadding="@dimen/padding_normal"
             android:drawableStart="@drawable/ic_gmail"
+            android:id="@+id/btnGoogle"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:padding="@dimen/padding_normal"
@@ -18,10 +18,12 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_large"/>
 
+    <View style="@style/Divider"/>
+
     <TextView
-            android:id="@+id/btnFacebook"
             android:drawablePadding="@dimen/padding_normal"
             android:drawableStart="@drawable/ic_facebook"
+            android:id="@+id/btnFacebook"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:padding="@dimen/padding_normal"
