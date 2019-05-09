@@ -14,7 +14,7 @@ class UpcomingPresenter(val view: IUpcoming.View) :
     }
 
     override fun getUpcoming(page: Int) {
-        Api.createService().getUpcoming().enqueue(object : Callback<Movies> {
+        Api.createService().getUpcoming(page).enqueue(object : Callback<Movies> {
             override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
                 if (response.body() != null) {
                     view.onResponse(response.body()?.results)

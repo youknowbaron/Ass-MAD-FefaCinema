@@ -3,7 +3,7 @@ package com.app.hcmut.movie.model
 import com.google.gson.annotations.SerializedName
 
 class Movies {
-    val results: List<Movie>? = null
+    val results: MutableList<Movie>? = null
 
     val page: Int? = null
 

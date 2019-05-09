@@ -6,7 +6,7 @@ interface IPopular {
     interface View {
         fun setPresenter(presenter: Presenter)
 
-        fun onResponse(movies: List<Movie>?)
+        fun onResponse(movies: MutableList<Movie>?)
 
         fun onFailure()
     }

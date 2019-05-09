@@ -14,7 +14,7 @@ class PopularPresenter(val view: IPopular.View) :
     }
 
     override fun getPopular(page: Int) {
-        Api.createService().getPopular().enqueue(object : Callback<Movies> {
+        Api.createService().getPopular(page).enqueue(object : Callback<Movies> {
             override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
                 if (response.body() != null) {
                     view.onResponse(response.body()?.results)

@@ -33,7 +33,7 @@ class Movie {
     @SerializedName("release_date")
     var releaseDate: String? = null
 
-    var revenue: Int? = null
+    var revenue: Long? = null
 
     var runtime: Int? = null
 

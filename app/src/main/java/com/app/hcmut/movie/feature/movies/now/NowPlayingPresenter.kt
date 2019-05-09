@@ -14,7 +14,7 @@ class NowPlayingPresenter(val view: INowPlaying.View) :
     }
 
     override fun getNowPlaying(page: Int) {
-        Api.createService().getNowPlaying().enqueue(object : Callback<Movies> {
+        Api.createService().getNowPlaying(page).enqueue(object : Callback<Movies> {
             override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
                 if (response.body() != null) {
                     view.onResponse(response.body()?.results)

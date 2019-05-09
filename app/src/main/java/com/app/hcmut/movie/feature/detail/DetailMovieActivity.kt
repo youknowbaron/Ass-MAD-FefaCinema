@@ -10,7 +10,6 @@ import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.WindowManager
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.helper.GenreHelper
@@ -20,12 +19,12 @@ import com.app.hcmut.movie.model.Videos
 import com.app.hcmut.movie.util.HIGH_QUALITY
 import com.app.hcmut.movie.util.MOVIE_ID
 import com.app.hcmut.movie.util.NORMAL_QUALITY
+import com.bumptech.glide.Glide
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragment
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.notification_template_lines_media.view.*
 
 class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
 
@@ -57,7 +56,6 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
     }
 
     private fun transparentStatusBar() {
-        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
         window.decorView.systemUiVisibility = SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
         window.statusBarColor = Color.TRANSPARENT
@@ -68,7 +66,8 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
     }
 
     override fun onResponse(movie: Movie) {
-        setDataOnView(movie)
+        if (!this.isDestroyed)
+            setDataOnView(movie)
     }
 
     override fun onResponse(video: Videos) {

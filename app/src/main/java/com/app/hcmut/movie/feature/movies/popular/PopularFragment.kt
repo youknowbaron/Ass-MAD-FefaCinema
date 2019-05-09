@@ -6,17 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.feature.detail.DetailMovieActivity
 import com.app.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.app.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.app.hcmut.movie.model.Movie
+import com.app.hcmut.movie.util.EndlessRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class PopularFragment : Fragment(), IPopular.View {
 
     private var presenter: IPopular.Presenter
     private var adapter: MovieAdapter? = null
+    private var scrollListener: EndlessRecyclerViewScrollListener? = null
+    private var nextPage = 1
 
     init {
         presenter = PopularPresenter(this)
@@ -51,6 +55,13 @@ class PopularFragment : Fragment(), IPopular.View {
             layoutManager = LinearLayoutManager(context)
             setRecycledViewPool(MovieViewPool.getInstance())
             (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
+            scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager as LinearLayoutManager) {
+                override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                    nextPage++
+                    presenter.getPopular(nextPage)
+                }
+            }
+            addOnScrollListener(scrollListener!!)
         }
     }
 
@@ -58,9 +69,9 @@ class PopularFragment : Fragment(), IPopular.View {
         this.presenter = presenter
     }
 
-    override fun onResponse(movies: List<Movie>?) {
+    override fun onResponse(movies: MutableList<Movie>?) {
         if (movies == null) return
-        adapter?.setData(movies)
+        adapter?.addAll(movies)
     }
 
     override fun onFailure() {

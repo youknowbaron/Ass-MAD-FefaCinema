@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger
 class MovieAdapter(private val context: Context?, private val listener: (Int) -> Unit) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-    private var movies: List<Movie> = ArrayList()
+    private var movies: MutableList<Movie> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
         Log.d("createViewHolder", "${countInflate.incrementAndGet()}")
@@ -35,9 +35,18 @@ class MovieAdapter(private val context: Context?, private val listener: (Int) ->
         }
     }
 
-    fun setData(movies: List<Movie>) {
+    fun setData(movies: MutableList<Movie>) {
         this.movies = movies
         notifyDataSetChanged()
+    }
+
+    fun addAll(movies:List<Movie>) {
+        this.movies.addAll(movies)
+        notifyDataSetChanged()
+    }
+
+    fun clearAll() {
+        this.movies.clear()
     }
 
     inner class ViewHolder(override val containerView: View) :
