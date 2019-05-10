@@ -26,4 +26,7 @@ interface TheMovieDatabaseApi {
     @GET("movie/upcoming")
     fun getUpcoming(@Query("page") page: Int = 1): Call<Movies>
 
+    @GET("search/movie")
+    fun searchMovies(@Query("query") query: String?, @Query("page") page: Int = 1): Call<Movies>
+
 }

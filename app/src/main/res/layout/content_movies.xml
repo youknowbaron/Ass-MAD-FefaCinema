@@ -51,6 +51,48 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"/>
 
+                <ImageView
+                        android:id="@+id/icClose"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:padding="@dimen/padding_button"
+                        android:src="@drawable/ic_close"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:hint="@string/hint_search"
+                        android:id="@+id/edtSearch"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/padding_normal"
+                        android:layout_width="0dp"
+                        android:textColor="@color/normal_text"
+                        android:textColorHint="@color/sub_text"
+                        android:textSize="@dimen/text_big"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvSearch"
+                        app:layout_constraintStart_toEndOf="@id/icClose"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:searchIcon="@drawable/ic_search_white"/>
+
+                <TextView
+                        android:fontFamily="@font/roboto_regular"
+                        android:id="@+id/tvSearch"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/padding_normal"
+                        android:layout_width="wrap_content"
+                        android:text="@string/search"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
                 <TextView
                         android:fontFamily="@font/roboto_medium"
                         android:id="@+id/tvTitle"
@@ -59,7 +101,6 @@
                         android:text="@string/movies"
                         android:textColor="@color/normal_text"
                         android:textSize="@dimen/text_title_toolbar"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +117,20 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"/>
 
+                <androidx.constraintlayout.widget.Group
+                        android:id="@+id/groupSearch"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:visibility="gone"
+                        app:constraint_referenced_ids="edtSearch, icClose, tvSearch"/>
+
+                <androidx.constraintlayout.widget.Group
+                        android:id="@+id/groupNormal"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:visibility="visible"
+                        app:constraint_referenced_ids="icSearch, tvTitle, icDrawer"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -85,6 +140,7 @@
                 android:layout_height="64dp"
                 android:layout_width="match_parent"
                 app:tabIndicator="@null"
+                app:tabBackground="@color/bg_toolbar"
                 app:tabMode="fixed"
                 style="@style/MyTabLayout"/>
 

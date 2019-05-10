@@ -100,7 +100,7 @@
 
             <Constraint
                     android:fontFamily="@font/roboto_regular"
-                    android:id="@+id/tvLogin"
+                    android:id="@+id/tvSignIn"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_normal"
                     android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
 
             <Constraint
                     android:fontFamily="@font/roboto_regular"
-                    android:id="@+id/tvLogout"
+                    android:id="@+id/tvSignOut"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_normal"
                     android:layout_width="wrap_content"
@@ -210,7 +210,7 @@
 
             <Constraint
                     android:fontFamily="@font/roboto_regular"
-                    android:id="@+id/tvLogin"
+                    android:id="@+id/tvSignIn"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_normal"
                     android:layout_width="wrap_content"
@@ -223,7 +223,7 @@
 
             <Constraint
                     android:fontFamily="@font/roboto_regular"
-                    android:id="@+id/tvLogout"
+                    android:id="@+id/tvSignOut"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_normal"
                     android:layout_width="wrap_content"

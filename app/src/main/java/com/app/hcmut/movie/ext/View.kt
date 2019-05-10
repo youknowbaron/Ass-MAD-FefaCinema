@@ -1,12 +1,13 @@
 package com.app.hcmut.movie.ext
 
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.isVisible
 
-fun View.setMarginTop(value: Int) {
-    updateLayoutParams<ViewGroup.MarginLayoutParams> {
-        topMargin = value
-    }
+fun View.visible() {
+    this.isVisible = true
+}
+
+fun View.gone() {
+    this.isVisible = false
 }
 

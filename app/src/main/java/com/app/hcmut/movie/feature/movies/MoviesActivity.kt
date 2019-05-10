@@ -10,8 +10,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.app.hcmut.movie.R
+import com.app.hcmut.movie.ext.gone
+import com.app.hcmut.movie.ext.hideKeyboard
 import com.app.hcmut.movie.ext.toast
+import com.app.hcmut.movie.ext.visible
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
+import com.app.hcmut.movie.feature.search.SearchResultActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApiClient
@@ -37,6 +41,24 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     private fun initToolbar() {
         icDrawer.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
+        icSearch.setOnClickListener {
+            groupSearch.visible()
+            groupNormal.gone()
+        }
+        icClose.setOnClickListener {
+            groupSearch.gone()
+            groupNormal.visible()
+            edtSearch.setText("")
+            hideKeyboard()
+        }
+        tvSearch.setOnClickListener {
+            val query = edtSearch.text?.trim()
+            if (query?.isEmpty() == true) {
+                edtSearch.error = "Please enter keyword"
+            } else {
+                startActivity(SearchResultActivity.newInstance(this, query.toString()))
+            }
         }
     }
 

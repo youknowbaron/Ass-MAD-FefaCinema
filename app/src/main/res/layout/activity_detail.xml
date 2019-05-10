@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal"
             android:layout_width="0dp"
-            android:text="@string/desc_story"
+            tools:text="@string/desc_story"
             android:textColor="@color/text_hint"
             android:textSize="@dimen/text_normal"
             app:layout_constraintEnd_toEndOf="parent"

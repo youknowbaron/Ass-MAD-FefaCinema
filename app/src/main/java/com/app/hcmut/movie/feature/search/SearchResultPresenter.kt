@@ -1,4 +1,4 @@
-package com.app.hcmut.movie.feature.movies.popular
+package com.app.hcmut.movie.feature.search
 
 import com.app.hcmut.movie.api.Api
 import com.app.hcmut.movie.model.Movies
@@ -6,17 +6,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PopularPresenter(val view: IPopular.View) : IPopular.Presenter {
+class SearchResultPresenter(val view: ISearchResult.View) : ISearchResult.Presenter {
 
     init {
         view.setPresenter(this)
     }
 
-    override fun getPopular(page: Int) {
-        Api.createService().getPopular(page).enqueue(object : Callback<Movies> {
+    override fun searchMovie(query: String, page: Int) {
+        Api.createService().searchMovies(query, page).enqueue(object : Callback<Movies> {
             override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
                 if (response.body() != null) {
-                    view.onResponse(response.body()?.results)
+                    view.onResponse(response.body()!!)
                 }
             }
 
