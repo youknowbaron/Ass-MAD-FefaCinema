@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
+import com.app.hcmut.movie.ext.toast
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
 import com.app.hcmut.movie.model.Movie
@@ -71,6 +72,9 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
     }
 
     override fun onResponse(video: Videos) {
+        if (video.results?.isEmpty() == true) {
+            return
+        }
         idVideo = video.results?.get(0)?.key
     }
 
@@ -136,7 +140,7 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
                 }
             })
         } else
-            Toast.makeText(this, "This movie has no video trailer!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "The trailer is not available!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onBackPressed() {
