@@ -20,17 +20,21 @@
 
         </activity>
         <activity android:name="com.app.hcmut.movie.feature.movies.MoviesActivity">
+
+        </activity>
+        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
+
+        <activity android:configChanges="orientation|keyboardHidden|screenSize|layoutDirection"
+                  android:name="com.app.hcmut.movie.feature.detail.DetailMovieActivity"/>
+        <activity android:name=".feature.search.SearchResultActivity"/>
+        <activity android:launchMode="singleTop"
+                  android:name=".feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
-
-        <activity android:name="com.app.hcmut.movie.feature.detail.DetailMovieActivity"
-                  android:configChanges="orientation|keyboardHidden|screenSize|layoutDirection"/>
-        <activity android:name=".feature.search.SearchResultActivity"/>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>

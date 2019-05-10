@@ -133,4 +133,10 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun showLoading() {
+    }
+
+    fun hideLoading() {
+    }
 }

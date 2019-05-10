@@ -75,13 +75,13 @@ class SearchResultActivity : AppCompatActivity(), ISearchResult.View {
 
     override fun onResponse(movies: Movies) {
         if (movies.results == null) return
-        if (movies.results.isEmpty()) {
-            imvNoResults.visible()
+        tvResult.text = getString(R.string.search_results, movies.totalResults, query)
+        if (movies.totalResults == 0) {
             rcvMovies.gone()
+            lavNoResults.visible()
         } else {
             adapter?.addAll(movies.results)
         }
-        tvResult.text = getString(R.string.search_results, movies.totalResults, query)
     }
 
     override fun onFailure() {}

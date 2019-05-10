@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.feature.detail.DetailMovieActivity
+import com.app.hcmut.movie.feature.movies.MoviesActivity
 import com.app.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.app.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.app.hcmut.movie.model.Movie
@@ -75,5 +76,13 @@ class NowPlayingFragment : Fragment(), INowPlaying.View {
     }
 
     override fun onFailure() {
+    }
+
+    override fun showLoading() {
+        (activity as MoviesActivity).showLoading()
+    }
+
+    override fun hideLoading() {
+        (activity as MoviesActivity).hideLoading()
     }
 }

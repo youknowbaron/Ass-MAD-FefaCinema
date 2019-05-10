@@ -7,7 +7,7 @@
         android:id="@+id/corParentMotion"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        tools:context=".feature.movies.now.NowPlayingFragment">
+        tools:context=".feature.movies.MoviesActivity">
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -65,15 +65,15 @@
                 <androidx.appcompat.widget.AppCompatEditText
                         android:hint="@string/hint_search"
                         android:id="@+id/edtSearch"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/padding_normal"
                         android:layout_width="0dp"
+                        android:maxLines="1"
                         android:textColor="@color/normal_text"
                         android:textColorHint="@color/sub_text"
                         android:textSize="@dimen/text_big"
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
-                        android:inputType="text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/tvSearch"
                         app:layout_constraintStart_toEndOf="@id/icClose"
@@ -139,18 +139,25 @@
                 android:id="@+id/tabLayout"
                 android:layout_height="64dp"
                 android:layout_width="match_parent"
-                app:tabIndicator="@null"
                 app:tabBackground="@color/bg_toolbar"
+                app:tabIndicator="@null"
                 app:tabMode="fixed"
                 style="@style/MyTabLayout"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <LinearLayout android:layout_height="match_parent"
+                  android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+    </LinearLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

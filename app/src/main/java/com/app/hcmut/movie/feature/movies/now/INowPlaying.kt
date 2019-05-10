@@ -9,6 +9,10 @@ interface INowPlaying {
         fun onResponse(movies: MutableList<Movie>?)
 
         fun onFailure()
+
+        fun showLoading()
+
+        fun hideLoading()
     }
 
     interface Presenter {
