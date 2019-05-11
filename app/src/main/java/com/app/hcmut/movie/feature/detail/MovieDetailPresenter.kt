@@ -2,6 +2,7 @@ package com.app.hcmut.movie.feature.detail
 
 import com.app.hcmut.movie.api.Api
 import com.app.hcmut.movie.model.Movie
+import com.app.hcmut.movie.model.Movies
 import com.app.hcmut.movie.model.Videos
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,6 +37,20 @@ class MovieDetailPresenter(val view: IDetail.View) : IDetail.Presenter {
             }
 
             override fun onFailure(call: Call<Videos>, t: Throwable) {
+                view.onFailure()
+            }
+        })
+    }
+
+    override fun getRecommendations(movieId: Int) {
+        Api.createService().getRecommendations(movieId).enqueue(object : Callback<Movies> {
+            override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
+                if (response.body() != null) {
+                    view.onResponse(response.body()?.results ?: mutableListOf())
+                }
+            }
+
+            override fun onFailure(call: Call<Movies>, t: Throwable) {
                 view.onFailure()
             }
         })

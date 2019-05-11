@@ -10,9 +10,10 @@ import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
-import com.app.hcmut.movie.ext.toast
+import com.app.hcmut.movie.feature.detail.adapter.DetailAdapter
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
 import com.app.hcmut.movie.model.Movie
@@ -35,6 +36,7 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
     private var isFullScreen: Boolean = false
     private var youtubePlayer: YouTubePlayer? = null
     private var playerFragment: YouTubePlayerFragment? = null
+    private lateinit var adapter: DetailAdapter
 
     companion object {
         fun newInstance(context: Context?, movieId: Int): Intent {
@@ -48,9 +50,16 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         movieId = intent.getIntExtra(MOVIE_ID, -1)
+        adapter = DetailAdapter(this) {
+            it.id?.let { it1 -> startActivity(DetailMovieActivity.newInstance(this, it1)) }
+        }
+        initRecyclerView()
+        rvRecommendations.adapter = adapter
+        rvRecommendations.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         presenter.getMovieDetail(movieId)
         presenter.getVideoTrailer(movieId)
+        presenter.getRecommendations(movieId)
 
         initClickEvent()
         transparentStatusBar()
@@ -76,6 +85,10 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
             return
         }
         idVideo = video.results?.get(0)?.key
+    }
+
+    override fun onResponse(movies: MutableList<Movie>) {
+        adapter.setData(movies)
     }
 
     private fun setDataOnView(movie: Movie) {
@@ -150,6 +163,9 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
             fragmentManager.beginTransaction().remove(playerFragment).commit()
         else
             super.onBackPressed()
+    }
+
+    private fun initRecyclerView() {
     }
 
     private fun setWindowFlag(activity: Activity, bits: Int, on: Boolean) {

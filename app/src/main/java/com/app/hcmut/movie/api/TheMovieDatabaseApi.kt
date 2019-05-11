@@ -29,4 +29,9 @@ interface TheMovieDatabaseApi {
     @GET("search/movie")
     fun searchMovies(@Query("query") query: String?, @Query("page") page: Int = 1): Call<Movies>
 
+    @GET("movie/{movie_id}/recommendations")
+    fun getRecommendations(
+        @Path("movie_id") movieId: Int?,
+        @Query("page") page: Int = 1
+    ): Call<Movies>
 }

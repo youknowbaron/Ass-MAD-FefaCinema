@@ -11,11 +11,14 @@ interface IDetail {
 
         fun onResponse(video: Videos)
 
+        fun onResponse(movies: MutableList<Movie>)
+
         fun onFailure()
     }
 
     interface Presenter {
         fun getMovieDetail(movieId: Int)
         fun getVideoTrailer(movieId: Int)
+        fun getRecommendations(movieId: Int)
     }
 }

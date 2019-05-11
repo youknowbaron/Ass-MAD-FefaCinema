@@ -31,4 +31,5 @@
     <string name="hint_search">Keyword…</string>
     <string name="search_result">Search Result</string>
     <string name="search_results">%d result(s) for \"%s\"</string>
+    <string name="recommendations">Recommendations</string>
 </resources>
