@@ -1,11 +1,14 @@
 package com.app.hcmut.movie.feature.movies
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.view.Gravity
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
@@ -16,26 +19,52 @@ import com.app.hcmut.movie.ext.toast
 import com.app.hcmut.movie.ext.visible
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import com.app.hcmut.movie.feature.search.SearchResultActivity
+import com.bumptech.glide.Glide
+import com.facebook.*
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.tasks.Task
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.content_movies.*
 import kotlinx.android.synthetic.main.drawer_menu.*
+import java.util.*
 
-class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, SignInBottomDialog.IActionListener {
+class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, SignInBottomDialog.IActionListener,
+    GoogleApiClient.OnConnectionFailedListener {
 
     private var lastPage = 0
     private lateinit var googleApiClient: GoogleApiClient
+    private var account: GoogleSignInAccount? = null
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var callbackManager: CallbackManager
+    lateinit var tvSignOut: AppCompatTextView
+    lateinit var tvSignIn: AppCompatTextView
 
     private var bottomDialog: SignInBottomDialog? = null
+
+    companion object {
+        const val GOOGLE_SIGN_IN_REQUEST_CODE = 1
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
+        tvSignIn = findViewById(R.id.tvSignIn)
+        tvSignOut = findViewById(R.id.tvSignOut)
         initView()
         initToolbar()
+        initGoogleSignIn()
         initDrawerMenu()
+        callbackManager = CallbackManager.Factory.create()
+
     }
 
     private fun initToolbar() {
@@ -63,8 +92,22 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     private fun initDrawerMenu() {
+        when (account) {
+            null -> {
+                tvSignIn.visible()
+                tvSignOut.gone()
+            }
+            else -> {
+                tvSignIn.gone()
+                tvSignOut.visible()
+            }
+        }
         tvSavedMovie.setOnClickListener {
+            signOut()
             toast("saved movie")
+        }
+        tvSignOut.setOnClickListener {
+            signOut()
         }
         tvSignIn.setOnClickListener {
             bottomDialog = SignInBottomDialog.newInstance()
@@ -72,12 +115,107 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         }
     }
 
+    private fun initGoogleSignIn() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        account = GoogleSignIn.getLastSignedInAccount(this)
+//        updateUI(account)
+    }
+
+    private fun signInGoogle() {
+        val signInIntent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST_CODE)
+    }
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == GOOGLE_SIGN_IN_REQUEST_CODE) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            account = completedTask.getResult(ApiException::class.java)
+
+            // Signed in successfully, show authenticated UI.
+            updateUIGoogle(account)
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("Gray", "signInResult:failed code=" + e.statusCode)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateUIGoogle(account: GoogleSignInAccount?) {
+        //TODO apply name, change visible signIn to Sign Out
+        tvSignIn.gone()
+        tvSignOut.visible()
+        if (account?.photoUrl != null) Glide.with(this).load(account.photoUrl).into(imvAvatar)
+        val personName = account?.displayName
+        tvName.text = "Hello, $personName"
+        Log.d("Gray", tvName.text.toString() + "Hello, $personName")
+    }
+
+    private fun updateUIFacebook(accessToken: AccessToken) {
+        GraphRequest.newMeRequest(
+            accessToken
+        ) { `object`, response ->
+            //TODO apply name, change visible signIn to Sign Out
+            val name = `object`.getString("name")
+            Glide.with(this)
+                .load("https://graph.facebook.com/" + `object`.getString("id") + "/picture?type=large")
+                .into(imvAvatar)
+        }
+    }
+
+    override fun onConnectionFailed(p0: ConnectionResult) {
+        Log.d("Gray", p0.errorMessage)
+    }
+
+    private fun signInFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(
+            this@MoviesActivity,
+            Arrays.asList("public_profile, email")
+        )
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    updateUIFacebook(loginResult.accessToken)
+                }
+
+                override fun onCancel() {
+                    val a = 1
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    val a = 1
+                    // App code
+                }
+            })
+    }
+
+
     override fun onClickGoogle() {
+        signInGoogle()
         toast("Google")
         bottomDialog?.dismiss()
     }
 
     override fun onClickFacebook() {
+        signInFacebook()
         toast("Facebook")
         bottomDialog?.dismiss()
     }
@@ -90,7 +228,6 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
             .build()
         googleApiClient.connect()
-        super.onStart()
         super.onStart()
     }
 
@@ -123,15 +260,17 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         lastPage = position
     }
 
-    override fun onBackPressed() {
-        signOut()
-        super.onBackPressed()
-    }
-
     private fun signOut() {
+        //TODO apply name, change visible sign Out to Sign In
         Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback {
+            account = null
+            tvSignOut.gone()
+            tvSignIn.visible()
+            tvName.gone()
+            Glide.with(this).load(R.drawable.icon_avatar_empty).into(imvAvatar)
             Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
         }
+        LoginManager.getInstance().logOut()
     }
 
     fun showLoading() {

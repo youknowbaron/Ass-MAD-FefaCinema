@@ -59,7 +59,7 @@ class MovieAdapter(private val context: Context?, private val listener: (Int) ->
             tvGenres.text = genres
             tvReleaseDate.text = movie?.releaseDate
             val linkImage = ImageHelper.getLinkImage(movie?.posterPath, NORMAL_QUALITY)
-            Glide.with(context?.applicationContext ?: return) 
+            Glide.with(context?.applicationContext ?: return)
                 .load(linkImage)
                 .into(imvPoster)
         }

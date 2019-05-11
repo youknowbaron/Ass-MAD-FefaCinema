@@ -19,11 +19,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/white"
-            app:strokeWidth="1dp"
-            tools:src="@drawable/cover"/>
+            tools:src="@drawable/icon_avatar_empty"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_medium"
             android:id="@+id/tvTypeAccount"
             android:layout_height="wrap_content"
@@ -37,7 +35,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imvAvatar"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_bold"
             android:id="@+id/tvName"
             android:layout_height="wrap_content"
@@ -61,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvName"
             style="@style/Divider"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_regular"
             android:id="@+id/tvWatchedMovie"
             android:layout_height="wrap_content"
@@ -74,7 +72,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view1"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_regular"
             android:id="@+id/tvSavedMovie"
             android:layout_height="wrap_content"
@@ -87,7 +85,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWatchedMovie"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_regular"
             android:id="@+id/tvSignIn"
             android:layout_height="wrap_content"
@@ -100,7 +98,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSavedMovie"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/roboto_regular"
             android:id="@+id/tvSignOut"
             android:layout_height="wrap_content"
@@ -109,7 +107,6 @@
             android:text="@string/sign_out"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSavedMovie"/>
