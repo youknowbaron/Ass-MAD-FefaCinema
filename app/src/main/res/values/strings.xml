@@ -20,6 +20,7 @@
     <string name="fb_login_protocol_scheme">fb771628916545049</string>
     <string name="standard">STANDARD</string>
     <string name="hello">Hello</string>
+    <string name="hello_name">Hello, %s</string>
     <string name="watched_movie">Watched Movie</string>
     <string name="saved_movie">Saved Movie</string>
     <string name="sign_in">Sign in</string>
