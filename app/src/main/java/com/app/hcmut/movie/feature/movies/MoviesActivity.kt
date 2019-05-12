@@ -129,6 +129,25 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN_REQUEST_CODE)
     }
 
+    private fun signInFacebook() {
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    updateUIFacebook(loginResult.accessToken)
+                }
+
+                override fun onCancel() {
+                    val a = 1
+                    // App code
+                }
+
+                override fun onError(exception: FacebookException) {
+                    val a = 1
+                    // App code
+                }
+            })
+    }
+
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -138,9 +157,9 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             // a listener.
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data)
         }
-
-        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
@@ -168,55 +187,38 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     private fun updateUIFacebook(accessToken: AccessToken) {
-        GraphRequest.newMeRequest(
-            accessToken
-        ) { `object`, response ->
-            //TODO apply name, change visible signIn to Sign Out
-            val name = `object`.getString("name")
-            Glide.with(this)
-                .load("https://graph.facebook.com/" + `object`.getString("id") + "/picture?type=large")
-                .into(imvAvatar)
-        }
+        val request =
+            GraphRequest.newMeRequest(
+                accessToken
+            ) { `object`, response ->
+                //TODO apply name, change visible signIn to Sign Out
+                val name = `object`?.getString("name")
+                Glide.with(this@MoviesActivity)
+                    .load("https://graph.facebook.com/" + `object`?.getString("id") + "/picture?type=large")
+                    .into(imvAvatar)
+            }
+        val parameters = Bundle()
+        parameters.putString("fields", "id,name")
+        request.parameters = parameters
+        request.executeAsync()
+
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
         Log.d("Gray", p0.errorMessage)
     }
 
-    private fun signInFacebook() {
-        LoginManager.getInstance().logInWithReadPermissions(
-            this@MoviesActivity,
-            Arrays.asList("public_profile, email")
-        )
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-            object : FacebookCallback<LoginResult> {
-                override fun onSuccess(loginResult: LoginResult) {
-                    updateUIFacebook(loginResult.accessToken)
-                }
-
-                override fun onCancel() {
-                    val a = 1
-                    // App code
-                }
-
-                override fun onError(exception: FacebookException) {
-                    val a = 1
-                    // App code
-                }
-            })
-    }
-
-
     override fun onClickGoogle() {
         signInGoogle()
-        toast("Google")
         bottomDialog?.dismiss()
     }
 
     override fun onClickFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(
+            this@MoviesActivity,
+            Arrays.asList("public_profile")
+        )
         signInFacebook()
-        toast("Facebook")
         bottomDialog?.dismiss()
     }
 
