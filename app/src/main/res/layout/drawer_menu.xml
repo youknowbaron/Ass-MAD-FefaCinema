@@ -41,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_small"
             android:layout_width="wrap_content"
-            android:text="@string/hello"
             android:textColor="@color/white"
             android:textSize="@dimen/text_title"
             app:layout_constraintEnd_toEndOf="parent"

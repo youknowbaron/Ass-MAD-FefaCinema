@@ -103,7 +103,6 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             }
         }
         tvSavedMovie.setOnClickListener {
-            signOut()
             toast("saved movie")
         }
         tvSignOut.setOnClickListener {
