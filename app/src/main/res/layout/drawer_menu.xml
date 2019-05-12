@@ -91,6 +91,7 @@
             android:id="@+id/tvSignIn"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal"
+            android:padding="@dimen/padding_small"
             android:layout_width="0dp"
             android:gravity="center"
             android:text="@string/sign_in"
