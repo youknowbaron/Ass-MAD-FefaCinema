@@ -1,5 +1,7 @@
 package com.app.hcmut.movie.helper
 
+import com.app.hcmut.movie.model.Genre
+
 object GenreHelper {
     private val genresInVietnamese = hashMapOf(
         Pair(28, "Hành Động"),
@@ -56,6 +58,19 @@ object GenreHelper {
             sb.append(genre)
             if (i != genresIds.size - 1)
                 sb.append(", ")
+            else sb.append(".")
+        }
+        return sb.toString()
+    }
+
+    fun getGenres(genres: List<Genre>?): String {
+        if (genres?.isEmpty() == true) return ""
+        val sb = StringBuilder()
+        for (i in 0 until genres?.size!!) {
+            val genre = genres[i].name
+            sb.append(genre)
+            if (i != genres.size - 1)
+                sb.append(" | ")
             else sb.append(".")
         }
         return sb.toString()

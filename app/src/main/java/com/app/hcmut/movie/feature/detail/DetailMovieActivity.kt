@@ -1,5 +1,6 @@
 package com.app.hcmut.movie.feature.detail
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -21,6 +22,7 @@ import com.app.hcmut.movie.model.Videos
 import com.app.hcmut.movie.util.HIGH_QUALITY
 import com.app.hcmut.movie.util.MOVIE_ID
 import com.app.hcmut.movie.util.NORMAL_QUALITY
+import com.app.hcmut.movie.util.Utils
 import com.bumptech.glide.Glide
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
@@ -91,6 +93,7 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         adapter.setData(movies)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setDataOnView(movie: Movie) {
         Glide.with(this)
             .load(ImageHelper.getLinkImage(movie.backdropPath, HIGH_QUALITY))
@@ -99,11 +102,19 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
             .load(ImageHelper.getLinkImage(movie.posterPath, NORMAL_QUALITY))
             .into(ivPoster)
         tvTitle.text = movie.title
-        if (movie.genreIds != null) {
-            tvCate.text = GenreHelper.getGenresFromIds(movie.genreIds)
+        if (!movie.genres.isNullOrEmpty()) {
+            tvCate.visibility = View.VISIBLE
+            tvCate.text = "Genre: ${GenreHelper.getGenres(movie.genres)}"
         } else tvCate.visibility = View.GONE
+        if (movie.runtime != null) {
+            tvRunTime.visibility = View.VISIBLE
+            tvRunTime.text = "Time: ${Utils.getRunTime(movie.runtime!!)}"
+        } else tvRunTime.visibility = View.GONE
 
-        tvTagLine.text = movie.tagline
+        if (!movie.tagline.isNullOrEmpty()) {
+            tvTagLine.visibility = View.VISIBLE
+            tvTagLine.text = "Tagline: ${movie.tagline}"
+        } else tvTagLine.visibility = View.GONE
         rbRating.rating = movie.voteAverage?.toFloat() ?: 0f
         tvScore.text = movie.voteAverage?.toString()
         tvDescStory.text = movie.overview

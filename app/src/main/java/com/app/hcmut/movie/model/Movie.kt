@@ -11,6 +11,7 @@ class Movie {
 
     var budget: Int? = null
 
+    @SerializedName("genres")
     var genres: List<Genre>? = null
 
     var homepage: String? = null
@@ -35,10 +36,12 @@ class Movie {
 
     var revenue: Long? = null
 
+    @SerializedName("runtime")
     var runtime: Int? = null
 
     var status: String? = null
 
+    @SerializedName("tagline")
     var tagline: String? = null
 
     var title: String? = null
