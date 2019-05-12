@@ -137,12 +137,10 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
                 }
 
                 override fun onCancel() {
-                    val a = 1
                     // App code
                 }
 
                 override fun onError(exception: FacebookException) {
-                    val a = 1
                     // App code
                 }
             })
@@ -182,8 +180,9 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         tvSignOut.visible()
         if (account?.photoUrl != null) Glide.with(this).load(account.photoUrl).into(imvAvatar)
         val personName = account?.displayName
+        val giveName = account?.givenName
+        val familyName = account?.familyName
         tvName.text = "Hello, $personName"
-        Log.d("Gray", tvName.text.toString() + "Hello, $personName")
     }
 
     private fun updateUIFacebook(accessToken: AccessToken) {
@@ -216,7 +215,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     override fun onClickFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(
             this@MoviesActivity,
-            Arrays.asList("public_profile")
+            Arrays.asList("public_profile, email")
         )
         signInFacebook()
         bottomDialog?.dismiss()
@@ -269,7 +268,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             tvSignOut.gone()
             tvSignIn.visible()
             tvName.gone()
-            Glide.with(this).load(R.drawable.icon_avatar_empty).into(imvAvatar)
+            Glide.with(this).load(R.color.black).into(imvAvatar)
             Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
         }
         LoginManager.getInstance().logOut()
