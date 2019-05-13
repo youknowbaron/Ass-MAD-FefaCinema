@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -46,6 +45,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     private var account: GoogleSignInAccount? = null
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
+    private var user: User? = null
 
     private var bottomDialog: SignInBottomDialog? = null
 
@@ -56,6 +56,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
+        user = getUserPrefObj()
         FacebookSdk.sdkInitialize(this.applicationContext)
         initGoogleSignIn()
         initToolbar()
@@ -63,7 +64,6 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         initView()
         callbackManager = CallbackManager.Factory.create()
         initSignInFacebook()
-
     }
 
     private fun initToolbar() {
@@ -91,7 +91,6 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     private fun initDrawerMenu() {
-        val user = this.getUserPrefObj()
         when (user) {
             null -> {
                 tvName.text = ""
@@ -100,12 +99,15 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             }
             else -> {
                 tvSignIn.text = getString(R.string.sign_out)
-                Glide.with(this).load(user.url).into(imvAvatar)
-                tvName.text = user.name
+                Glide.with(this).load(user?.url).into(imvAvatar)
+                tvName.text = getString(R.string.hello_name, user?.name)
             }
         }
         tvSavedMovie.setOnClickListener {
-            toast("saved movie")
+            onClickSaved()
+        }
+        tvWatchedMovie.setOnClickListener {
+            onClickSaved()
         }
         tvSignIn.setOnClickListener {
             if (tvSignIn.text == getString(R.string.sign_in)) {
@@ -114,6 +116,14 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             } else if (tvSignIn.text == getString(R.string.sign_out)) {
                 signOut()
             }
+        }
+    }
+
+    private fun onClickSaved() {
+        if (user == null) {
+            toast("Please sign in first")
+        } else {
+            toast("This feature will release soon")
         }
     }
 
@@ -175,22 +185,19 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     private fun updateUIGoogle(account: GoogleSignInAccount?) {
-        //TODO apply name, change visible signIn to Sign Out
         tvSignIn.text = getString(R.string.sign_out)
         if (account?.photoUrl != null) Glide.with(this).load(account.photoUrl).into(imvAvatar)
         val personName = account?.displayName
-        val giveName = account?.givenName
-        val familyName = account?.familyName
         tvName.text = getString(R.string.hello_name, personName)
-        this.saveUserPrefObj(User(account?.photoUrl.toString(),personName))
+        user = User(account?.photoUrl.toString(), personName)
+        this.saveUserPrefObj(user)
     }
 
     private fun updateUIFacebook(accessToken: AccessToken) {
         val request =
             GraphRequest.newMeRequest(
                 accessToken
-            ) { `object`, response ->
-                //TODO apply name, change visible signIn to Sign Out
+            ) { `object`, _ ->
                 val name = `object`?.getString("name")
                 val url = "https://graph.facebook.com/" + `object`?.getString("id") + "/picture?type=large"
                 Glide.with(this@MoviesActivity)
@@ -198,7 +205,8 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
                     .into(imvAvatar)
                 tvName.text = getString(R.string.hello_name, name)
                 tvSignIn.text = getString(R.string.sign_out)
-                this.saveUserPrefObj(User(url, name))
+                user = User(url, name)
+                this.saveUserPrefObj(user)
             }
         val parameters = Bundle()
         parameters.putString("fields", "id,name")
@@ -263,11 +271,11 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     private fun signOut() {
-        //TODO apply name, change visible sign Out to Sign In
         Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback {
             tvSignIn.text = getString(R.string.sign_in)
             tvName.text = ""
             Glide.with(this).load(R.drawable.icon_avatar_empty).into(imvAvatar)
+            user = null
             this.saveUserPrefObj(null)
         }
         GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE) {
@@ -275,9 +283,10 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             tvSignIn.text = getString(R.string.sign_in)
             tvName.text = ""
             Glide.with(this).load(R.drawable.icon_avatar_empty).into(imvAvatar)
+            user = null
             this.saveUserPrefObj(null)
         }
-        Toast.makeText(applicationContext, "Logged Out", Toast.LENGTH_SHORT).show()
+        toast("Signed out successfully")
     }
 
     fun showLoading() {

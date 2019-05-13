@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:background="@color/colorPrimaryDark"
               android:layout_height="match_parent"
-              android:layout_width="match_parent"
-              android:orientation="vertical">
+              android:layout_width="match_parent">
+
+    <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/logo"
+            android:layout_width="160dp"
+            android:layout_height="160dp"/>
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lavLoadingMario"
+            android:layout_marginTop="60dp"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             app:lottie_autoPlay="true"
             app:lottie_fileName="loading_mario.json"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

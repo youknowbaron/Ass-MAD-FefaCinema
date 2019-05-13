@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
+import com.app.hcmut.movie.ext.toast
 import com.app.hcmut.movie.feature.detail.adapter.DetailAdapter
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
@@ -160,11 +161,10 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
                 override fun onInitializationFailure(
                     provider: YouTubePlayer.Provider, youTubeInitializationResult: YouTubeInitializationResult
                 ) {
-                    Toast.makeText(this@DetailMovieActivity, "Failed to load video!", Toast.LENGTH_SHORT).show()
+                    toast("Failed to load video!")
                 }
             })
-        } else
-            Toast.makeText(this, "The trailer is not available!", Toast.LENGTH_SHORT).show()
+        } else toast("The trailer is not available!")
     }
 
     override fun onBackPressed() {
