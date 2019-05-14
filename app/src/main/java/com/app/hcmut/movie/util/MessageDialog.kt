@@ -91,8 +91,8 @@ class MessageDialog(
         else
             tvTitle?.visibility = View.VISIBLE
 
-        dialog?.setCancelable(false)
-        dialog?.setCanceledOnTouchOutside(false)
+        dialog?.setCancelable(true)
+        dialog?.setCanceledOnTouchOutside(true)
         dialog?.show()
     }
 
