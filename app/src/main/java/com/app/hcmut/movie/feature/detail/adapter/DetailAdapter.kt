@@ -20,7 +20,6 @@ class DetailAdapter(private val context: Context?, private val listener: (Movie)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recommend, parent, false))
-
     }
 
     override fun getItemCount(): Int = listMovie.size

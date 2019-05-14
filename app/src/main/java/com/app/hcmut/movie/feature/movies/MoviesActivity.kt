@@ -13,9 +13,9 @@ import com.app.hcmut.movie.ext.*
 import com.app.hcmut.movie.feature.BaseActivity
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import com.app.hcmut.movie.feature.search.SearchResultActivity
-import com.app.hcmut.movie.getUserPrefObj
+import com.app.hcmut.movie.ext.getUserPrefObj
 import com.app.hcmut.movie.model.User
-import com.app.hcmut.movie.saveUserPrefObj
+import com.app.hcmut.movie.ext.saveUserPrefObj
 import com.bumptech.glide.Glide
 import com.facebook.*
 import com.facebook.login.LoginManager

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.hcmut.movie.R
+import com.app.hcmut.movie.ext.showMessage
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
 import com.app.hcmut.movie.model.Movie
@@ -62,6 +63,9 @@ class MovieAdapter(private val context: Context?, private val listener: (Int) ->
             Glide.with(context?.applicationContext ?: return)
                 .load(linkImage)
                 .into(imvPoster)
+            cvBookTicket.setOnClickListener {
+                context.showMessage("The cinema is under maintenance. We will come back soon.", "Sorry!")
+            }
         }
     }
 
