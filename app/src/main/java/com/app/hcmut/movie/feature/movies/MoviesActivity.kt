@@ -5,12 +5,12 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.ext.*
+import com.app.hcmut.movie.feature.BaseActivity
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import com.app.hcmut.movie.feature.search.SearchResultActivity
 import com.app.hcmut.movie.getUserPrefObj
@@ -29,12 +29,13 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.Task
+import com.roger.catloadinglibrary.CatLoadingView
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.content_movies.*
 import kotlinx.android.synthetic.main.drawer_menu.*
 import java.util.*
 
-class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, SignInBottomDialog.IActionListener,
+class MoviesActivity : BaseActivity(), ViewPager.OnPageChangeListener, SignInBottomDialog.IActionListener,
     GoogleApiClient.OnConnectionFailedListener {
 
     private var lastPage = 0
@@ -45,6 +46,8 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     private var user: User? = null
 
     private var bottomDialog: SignInBottomDialog? = null
+    private lateinit var loadingFragment: CatLoadingView
+    private var isLoading = false
 
     companion object {
         const val GOOGLE_SIGN_IN_REQUEST_CODE = 1
@@ -55,6 +58,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
         setContentView(R.layout.activity_movies)
         user = getUserPrefObj()
         FacebookSdk.sdkInitialize(this.applicationContext)
+        loadingFragment = CatLoadingView()
         initGoogleSignIn()
         initToolbar()
         initDrawerMenu()
@@ -215,7 +219,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        showMessage("Something went wrong", "Error")
+        showMessage("Connection Failed", "Error")
     }
 
     override fun onClickGoogle() {
@@ -286,11 +290,5 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             this.saveUserPrefObj(null)
         }
         showMessage("Signed out successfully")
-    }
-
-    fun showLoading() {
-    }
-
-    fun hideLoading() {
     }
 }

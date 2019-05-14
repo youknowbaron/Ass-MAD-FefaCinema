@@ -14,6 +14,7 @@ import com.app.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.app.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.app.hcmut.movie.model.Movie
 import com.app.hcmut.movie.util.EndlessRecyclerViewScrollListener
+import com.app.hcmut.movie.util.MessageDialog
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class NowPlayingFragment : Fragment(), INowPlaying.View {
@@ -76,6 +77,7 @@ class NowPlayingFragment : Fragment(), INowPlaying.View {
     }
 
     override fun onFailure() {
+        MessageDialog(context ?: return, "Error", "No internet connection", false).show()
     }
 
     override fun showLoading() {

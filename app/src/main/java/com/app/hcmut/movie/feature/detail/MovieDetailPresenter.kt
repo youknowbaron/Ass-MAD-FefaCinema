@@ -15,14 +15,17 @@ class MovieDetailPresenter(val view: IDetail.View) : IDetail.Presenter {
     }
 
     override fun getMovieDetail(movieId: Int) {
+        view.showLoading()
         Api.createService().getDetails(movieId).enqueue(object : Callback<Movie> {
             override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                view.hideLoading()
                 if (response.body() != null) {
                     view.onResponse(response.body()!!)
                 }
             }
 
             override fun onFailure(call: Call<Movie>, t: Throwable) {
+                view.hideLoading()
                 view.onFailure()
             }
         })
@@ -31,12 +34,14 @@ class MovieDetailPresenter(val view: IDetail.View) : IDetail.Presenter {
     override fun getVideoTrailer(movieId: Int) {
         Api.createService().getVideoTrailer(movieId).enqueue(object : Callback<Videos> {
             override fun onResponse(call: Call<Videos>, response: Response<Videos>) {
+                view.hideLoading()
                 if (response.body() != null) {
                     view.onResponse(response.body()!!)
                 }
             }
 
             override fun onFailure(call: Call<Videos>, t: Throwable) {
+                view.hideLoading()
                 view.onFailure()
             }
         })
@@ -45,12 +50,14 @@ class MovieDetailPresenter(val view: IDetail.View) : IDetail.Presenter {
     override fun getRecommendations(movieId: Int) {
         Api.createService().getRecommendations(movieId).enqueue(object : Callback<Movies> {
             override fun onResponse(call: Call<Movies>, response: Response<Movies>) {
+                view.hideLoading()
                 if (response.body() != null) {
                     view.onResponse(response.body()?.results ?: mutableListOf())
                 }
             }
 
             override fun onFailure(call: Call<Movies>, t: Throwable) {
+                view.hideLoading()
                 view.onFailure()
             }
         })
