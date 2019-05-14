@@ -13,6 +13,7 @@ import com.app.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.app.hcmut.movie.feature.movies.adapter.MovieViewPool
 import com.app.hcmut.movie.model.Movie
 import com.app.hcmut.movie.util.EndlessRecyclerViewScrollListener
+import com.app.hcmut.movie.util.MessageDialog
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 class PopularFragment : Fragment(), IPopular.View {
@@ -75,5 +76,7 @@ class PopularFragment : Fragment(), IPopular.View {
     }
 
     override fun onFailure() {
+        MessageDialog(context ?: return, "Error", "No internet connection", false).show()
+
     }
 }

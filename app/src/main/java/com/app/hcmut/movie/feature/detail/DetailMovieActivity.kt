@@ -14,23 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.ext.showMessage
+import com.app.hcmut.movie.feature.BaseActivity
 import com.app.hcmut.movie.feature.detail.adapter.DetailAdapter
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
 import com.app.hcmut.movie.model.Movie
 import com.app.hcmut.movie.model.Videos
-import com.app.hcmut.movie.util.HIGH_QUALITY
-import com.app.hcmut.movie.util.MOVIE_ID
-import com.app.hcmut.movie.util.NORMAL_QUALITY
-import com.app.hcmut.movie.util.Utils
+import com.app.hcmut.movie.util.*
 import com.bumptech.glide.Glide
-import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragment
+import com.roger.catloadinglibrary.CatLoadingView
 import kotlinx.android.synthetic.main.activity_detail.*
 
-class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
+class DetailMovieActivity : BaseActivity(), IDetail.View {
 
     private var presenter: IDetail.Presenter = MovieDetailPresenter(this)
     private var movieId: Int = -1
@@ -39,6 +37,7 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
     private var youtubePlayer: YouTubePlayer? = null
     private var playerFragment: YouTubePlayerFragment? = null
     private lateinit var adapter: DetailAdapter
+    private var loadingFragment: CatLoadingView? = null
 
     companion object {
         fun newInstance(context: Context?, movieId: Int): Intent {
@@ -93,6 +92,10 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         adapter.setData(movies)
     }
 
+    override fun onFailure() {
+        MessageDialog(this, "Error", "No internet connection", false).show()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setDataOnView(movie: Movie) {
         Glide.with(this)
@@ -118,10 +121,6 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         rbRating.rating = movie.voteAverage?.toFloat() ?: 0f
         tvScore.text = movie.voteAverage?.toString()
         tvDescStory.text = movie.overview
-    }
-
-    override fun onFailure() {
-
     }
 
     private fun initClickEvent() {
@@ -188,4 +187,5 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
         }
         win.attributes = winParams
     }
+
 }
