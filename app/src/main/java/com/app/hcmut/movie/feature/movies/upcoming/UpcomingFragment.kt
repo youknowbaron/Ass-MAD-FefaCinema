@@ -76,6 +76,6 @@ class UpcomingFragment : Fragment(), IUpcoming.View {
     }
 
     override fun onFailure() {
-        MessageDialog(context ?: return, "Error", "No internet connection", false).show()
+//        MessageDialog(context ?: return, "Error", "No internet connection", false).show()
     }
 }
