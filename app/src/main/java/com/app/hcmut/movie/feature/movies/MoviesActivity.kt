@@ -10,10 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.app.hcmut.movie.R
-import com.app.hcmut.movie.ext.gone
-import com.app.hcmut.movie.ext.hideKeyboard
-import com.app.hcmut.movie.ext.toast
-import com.app.hcmut.movie.ext.visible
+import com.app.hcmut.movie.ext.*
 import com.app.hcmut.movie.feature.movies.adapter.MoviesPagerAdapter
 import com.app.hcmut.movie.feature.search.SearchResultActivity
 import com.app.hcmut.movie.getUserPrefObj
@@ -114,16 +111,18 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
                 bottomDialog = SignInBottomDialog.newInstance()
                 bottomDialog?.show(supportFragmentManager, bottomDialog?.tag)
             } else if (tvSignIn.text == getString(R.string.sign_out)) {
-                signOut()
+                showMessageHasChoose("Sign out", "Are you sure want to sign out?") {
+                    signOut()
+                }
             }
         }
     }
 
     private fun onClickSaved() {
         if (user == null) {
-            toast("Please sign in first")
+            showMessage("Please sign in first")
         } else {
-            toast("This feature will release soon")
+            showMessage("This feature will release soon")
         }
     }
 
@@ -149,11 +148,10 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
                 }
 
                 override fun onCancel() {
-                    // App code
                 }
 
                 override fun onError(exception: FacebookException) {
-                    // App code
+                    showMessage("Something went wrong", "Error")
                 }
             })
     }
@@ -178,6 +176,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             // Signed in successfully, show authenticated UI.
             updateUIGoogle(account)
         } catch (e: ApiException) {
+            showMessage("Something went wrong", "Error")
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w("Gray", "signInResult:failed code=" + e.statusCode)
@@ -216,7 +215,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-        Log.d("Gray", p0.errorMessage)
+        showMessage("Something went wrong", "Error")
     }
 
     override fun onClickGoogle() {
@@ -286,7 +285,7 @@ class MoviesActivity : AppCompatActivity(), ViewPager.OnPageChangeListener, Sign
             user = null
             this.saveUserPrefObj(null)
         }
-        toast("Signed out successfully")
+        showMessage("Signed out successfully")
     }
 
     fun showLoading() {

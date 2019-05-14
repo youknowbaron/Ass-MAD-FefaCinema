@@ -61,5 +61,7 @@
 
     <color name="text_hint">#BCBFC1</color>
 
-    <color name="blue">#4267B2</color>
+    <color name="blue">#007AFF</color>
+
+    <color name="background_message">#D1F8F8F8</color>
 </resources>

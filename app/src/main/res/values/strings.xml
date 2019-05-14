@@ -33,4 +33,7 @@
     <string name="search_result">Search Result</string>
     <string name="search_results">%d result(s) for \"%s\"</string>
     <string name="recommendations">Recommendations</string>
+    <string name="ok">Ok</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

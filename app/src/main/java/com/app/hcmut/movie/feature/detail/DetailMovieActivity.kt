@@ -10,11 +10,10 @@ import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.hcmut.movie.BuildConfig
 import com.app.hcmut.movie.R
-import com.app.hcmut.movie.ext.toast
+import com.app.hcmut.movie.ext.showMessage
 import com.app.hcmut.movie.feature.detail.adapter.DetailAdapter
 import com.app.hcmut.movie.helper.GenreHelper
 import com.app.hcmut.movie.helper.ImageHelper
@@ -161,10 +160,10 @@ class DetailMovieActivity : YouTubeBaseActivity(), IDetail.View {
                 override fun onInitializationFailure(
                     provider: YouTubePlayer.Provider, youTubeInitializationResult: YouTubeInitializationResult
                 ) {
-                    toast("Failed to load video!")
+                    showMessage("Failed to load video!")
                 }
             })
-        } else toast("The trailer is not available!")
+        } else showMessage("The trailer is not available!")
     }
 
     override fun onBackPressed() {
