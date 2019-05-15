@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.hcmut.movie.R
 import com.app.hcmut.movie.ext.gone
 import com.app.hcmut.movie.ext.visible
+import com.app.hcmut.movie.feature.BaseActivity
 import com.app.hcmut.movie.feature.detail.DetailMovieActivity
 import com.app.hcmut.movie.feature.movies.adapter.MovieAdapter
 import com.app.hcmut.movie.feature.movies.adapter.MovieViewPool
@@ -17,7 +18,7 @@ import com.app.hcmut.movie.util.EndlessRecyclerViewScrollListener
 import com.app.hcmut.movie.util.QUERY
 import kotlinx.android.synthetic.main.activity_search_result.*
 
-class SearchResultActivity : AppCompatActivity(), ISearchResult.View {
+class SearchResultActivity : BaseActivity(), ISearchResult.View {
 
     companion object {
         fun newInstance(context: Context?, query: String): Intent {

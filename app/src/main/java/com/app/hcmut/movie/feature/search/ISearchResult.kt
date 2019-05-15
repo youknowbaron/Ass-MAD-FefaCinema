@@ -9,6 +9,10 @@ interface ISearchResult {
         fun onResponse(movies: Movies)
 
         fun onFailure()
+
+        fun showLoading()
+
+        fun hideLoading()
     }
 
     interface Presenter {

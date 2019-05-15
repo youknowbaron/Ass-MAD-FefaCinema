@@ -37,7 +37,6 @@ class DetailMovieActivity : BaseActivity(), IDetail.View {
     private var youtubePlayer: YouTubePlayer? = null
     private var playerFragment: YouTubePlayerFragment? = null
     private lateinit var adapter: DetailAdapter
-    private var loadingFragment: CatLoadingView? = null
 
     companion object {
         fun newInstance(context: Context?, movieId: Int): Intent {
