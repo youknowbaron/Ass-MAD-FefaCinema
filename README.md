@@ -12,6 +12,8 @@
 <img src='https://imgur.com/UK1uObu.png' title='Tìm kiếm phim' width='' alt='Tìm kiếm phim'>
 <img src='https://imgur.com/3stGLqC.png' title='Kết quả tìm kiếm' width='' alt='Kết quả tìm kiếm'>
 
+
+![alt-text-1](https://imgur.com/l76Zj52.png "title-1") ![alt-text-2](https://imgur.com/l76Zj52.png "title-2")
 ## Notes
 
 - Time-consuming when practiced call API
