@@ -1,7 +1,7 @@
 
 # Fefa Cinema
 
-<img align='center' src='https://github.com/youknowbaron/Ass-MAD-FefaCinema/blob/master/screen/logo.png' title='Logo' width='' alt='Logo'>
+<p align="center"> <img align='center' src='https://github.com/youknowbaron/Ass-MAD-FefaCinema/blob/master/screen/logo.png' title='Logo' width='' alt='Logo'> </p>
 
 - Tải ứng dụng trên [Google Play](https://play.google.com/store/apps/details?id=com.app.hcmut.mymovie&hl=vi)
 
