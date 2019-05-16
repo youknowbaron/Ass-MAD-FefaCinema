@@ -1,6 +1,10 @@
 
 # Fefa Cinema
 
+<img align='center' src='https://github.com/youknowbaron/Ass-MAD-FefaCinema/blob/master/screen/logo.png' title='Logo' width='' alt='Logo'>
+
+- Tải ứng dụng trên [Google Play](https://play.google.com/store/apps/details?id=com.app.hcmut.mymovie&hl=vi)
+
 Ứng dụng được xây dựng dựa trên những nhu cầu thực tế của khách hàng và một phần giúp nhà quản lý rạp chiếu phim giải quyết những khó khăn gặp phải, giảm thiểu rủi ro trong quá trình quản lý rạp. Ứng dụng hướng tới đối tượng là khách hàng. Hệ thống có các chức năng chính bao gồm: xem danh sách phim, tìm kiếm phim, xem thông tin chi tiết phim, xem lịch chiếu phim, xem lịch sử phim đã thích, đăng nhập thông qua mạng xã hội như Facebook hoặc Gmail. Khi đăng nhập, khách hàng có thể đặt vé xem phim và có thể xem lại lịch sử những giao dịch trước đó. 
 
 ## Design
