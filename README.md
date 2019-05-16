@@ -5,6 +5,8 @@
 
 - Tải ứng dụng trên [Google Play](https://play.google.com/store/apps/details?id=com.app.hcmut.mymovie&hl=vi)
 
+Trong các rạp chiếu phim hiện nay, việc quản lý và tổ chức chiếu phim, bán vé luôn là vấn đề được quan tâm. Người quản lý luôn gặp khó khăn trong vấn đề quản lý quá trình hoạt động của từng bộ phận như: phim, lịch chiếu, trang thiết bị,… và đặc biệt là quá trình bán vé. Khách hàng phải xếp hàng chờ đợi hàng giờ để mua được vé xem phim. Chính vì lí do đó mà số lượng khách hàng đi xem phim cũng ít hơn, thu nhập của rạp cũng bị ảnh hưởng. Vì vậy, tạo ra một ứng dụng đặt vé xem phim là một nhu cầu tất yếu khi công nghệ ngày càng phát triển, mọi người có thể ở nhà lựa phim mình thích và đặt vé thông qua điện thoại của mình. Khi đặt xong họ chỉ cần đến rạp để kiểm tra lại việc mua vé online, và thế là có thể vào xem phim ngay.
+
 Ứng dụng được xây dựng dựa trên những nhu cầu thực tế của khách hàng và một phần giúp nhà quản lý rạp chiếu phim giải quyết những khó khăn gặp phải, giảm thiểu rủi ro trong quá trình quản lý rạp. Ứng dụng hướng tới đối tượng là khách hàng. Hệ thống có các chức năng chính bao gồm: xem danh sách phim, tìm kiếm phim, xem thông tin chi tiết phim, xem lịch chiếu phim, xem lịch sử phim đã thích, đăng nhập thông qua mạng xã hội như Facebook hoặc Gmail. Khi đăng nhập, khách hàng có thể đặt vé xem phim và có thể xem lại lịch sử những giao dịch trước đó. 
 
 ## Design
@@ -29,7 +31,7 @@
 
 ## License
 
-    Copyright 2018 Team 2
+    Copyright 2018 Team 3
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
