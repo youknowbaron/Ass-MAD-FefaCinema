@@ -13,7 +13,10 @@
 <img src='https://imgur.com/3stGLqC.png' title='Kết quả tìm kiếm' width='' alt='Kết quả tìm kiếm'>
 
 
-![alt-text-1](https://imgur.com/l76Zj52.png "title-1") ![alt-text-2](https://imgur.com/l76Zj52.png "title-2")
+![alt-text-1](https://i.imgur.com/96RGpGQ.png 'Màn hình splash') ![alt-text-2](https://imgur.com/MKqYdHn.png 'Danh sách phim theo chủ đề')
+![alt-text-1](https://i.imgur.com/l76Zj52.png 'Chi tiết phim') ![alt-text-2](https://imgur.com/7tkU9Yp.png 'Drawer menu')
+![alt-text-1](https://i.imgur.com/UK1uObu.png 'Tìm kiếm phim') ![alt-text-2](https://imgur.com/3stGLqC.png 'Kết quả tìm kiếm')
+
 ## Notes
 
 - Time-consuming when practiced call API
