@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.app.hcmut.movie">
+          package="com.app.hcmut.mymovie">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -9,22 +9,22 @@
     <application
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:name="com.app.hcmut.movie.MovieApplication"
+            android:name="com.app.hcmut.mymovie.MovieApplication"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.app.hcmut.movie.feature.movies.MoviesActivity">
+        <activity android:name="com.app.hcmut.mymovie.feature.movies.MoviesActivity">
 
         </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
 
         <activity android:configChanges="orientation|keyboardHidden|screenSize|layoutDirection"
-                  android:name="com.app.hcmut.movie.feature.detail.DetailMovieActivity"/>
-        <activity android:name=".feature.search.SearchResultActivity"/>
+                  android:name="com.app.hcmut.mymovie.feature.detail.DetailMovieActivity"/>
+        <activity android:name="com.app.hcmut.mymovie.feature.search.SearchResultActivity"/>
         <activity android:launchMode="singleTop"
-                  android:name=".feature.splash.SplashActivity">
+                  android:name="com.app.hcmut.mymovie.feature.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
